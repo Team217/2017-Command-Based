@@ -23,20 +23,16 @@ public class TeleopDrive extends Command {
 
         Robot.kDrivebase.set(speed, turn);
 
-        //if (Robot.oi.rightTriggerDriver.get()) {
-        if (Robot.oi.driver.getRawAxis(3) > 0) {
+        if (Robot.oi.rightTriggerDriver.get()) {
             Robot.kDrivebase.setPTO(PTO.Omni);
         }
-        //else if (Robot.oi.rightBumperDriver.get()) {
-        else if (Robot.oi.driver.getRawButton(6)) {
+        else if (Robot.oi.rightBumperDriver.get()) {
             Robot.kDrivebase.setPTO(PTO.Traction);
         }
-        //else if (Robot.oi.leftTriggerDriver.get()) {
-        else if (Robot.oi.driver.getRawAxis(2) > 0) {
+        else if (Robot.oi.leftTriggerDriver.get()) {
             Robot.kDrivebase.setPTO(PTO.FrontOmni);
         }
-        //else if (Robot.oi.leftBumperDriver.get()) {
-        else if (Robot.oi.driver.getRawButton(5)) {
+        else if (Robot.oi.leftBumperDriver.get()) {
             Robot.kDrivebase.setPTO(PTO.BackOmni);
         }
     }
