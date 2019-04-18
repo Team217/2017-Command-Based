@@ -19,8 +19,8 @@ public class TeleopDrive extends Command {
     @Override
     protected void execute() {
         double speed = Num.deadband(Robot.oi.driver.getY(), 0.08);
-        double turn = Num.deadband(-Robot.oi.driver.getRawAxis(4), 0.08);
-
+        double turn = Num.deadband(-Robot.oi.driver.getZ(), 0.08);
+        
         Robot.kDrivebase.set(speed, turn);
 
         if (Robot.oi.rightTriggerDriver.get()) {

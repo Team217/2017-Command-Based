@@ -16,8 +16,8 @@ public class Drivebase extends Subsystem {
     }
 
     public void set(double speed, double turn) {
-        double leftSpeed = speed + turn;
-        double rightSpeed = -speed + turn;
+        double leftSpeed = -speed + turn;
+        double rightSpeed = speed + turn;
 
         leftMaster.set(leftSpeed);
         rightMaster.set(rightSpeed);

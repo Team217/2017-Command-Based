@@ -18,7 +18,7 @@ public class TeleopBallIntake extends Command {
         double speed = Robot.oi.triangleOper.get() ? 0.8 : 0;
         Robot.kBallIntake.set(speed);
 
-        if (Robot.oi.oper.getPOV() == 0) {
+        if (Robot.oi.oper.getPOV() == 0 && Robot.oi.oper.getButtonCount() != 0) {
             Robot.kBallIntake.setFlap(Flap.Up);
         }
         else if (Robot.oi.oper.getPOV() == 180) {
