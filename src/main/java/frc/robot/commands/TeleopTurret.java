@@ -2,20 +2,20 @@ package frc.robot.commands;
 
 import org.team217.*;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.*;
 
-public class TeleopTurret extends Command {
+public class TeleopTurret extends CommandBase {
     public TeleopTurret() {
-        requires(Robot.kTurret);
+        addRequirements(Robot.kTurret);
     }
 
     @Override
-    protected void initialize() {
+    public void initialize() {
     }
 
     @Override
-    protected void execute() {
+    public void execute() {
         double speed = Num.deadband(Robot.oi.oper.getZ(), 0.08);
         Robot.kTurret.setTurret(speed);
 
@@ -25,11 +25,11 @@ public class TeleopTurret extends Command {
         double hoodSpeed = 0;
 
         if (Robot.oi.rightBumperOper.get()) {
-            kickerSpeed = -0.5;
+            kickerSpeed = 0.5;
             flywheelSpeed = -0.75;
         }
         if (Robot.oi.circleOper.get()) {
-            lifterSpeed = -0.5;
+            lifterSpeed = 0.5;
         }
 
         if (Robot.oi.squareOper.get()) {
@@ -46,21 +46,12 @@ public class TeleopTurret extends Command {
     }
 
     @Override
-    protected boolean isFinished() {
+    public boolean isFinished() {
         return false;
     }
 
     @Override
-    protected void end() {
-        Robot.kTurret.setTurret(0);
-        Robot.kTurret.setLifter(0);
-        Robot.kTurret.setKicker(0);
-        Robot.kTurret.setFlywheel(0);
-        Robot.kTurret.setHood(0);
-    }
-
-    @Override
-    protected void interrupted() {
+    public void end(boolean interrupted) {
         Robot.kTurret.setTurret(0);
         Robot.kTurret.setLifter(0);
         Robot.kTurret.setKicker(0);

@@ -2,22 +2,22 @@ package frc.robot.commands;
 
 import org.team217.*;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.*;
 import frc.robot.subsystems.Drivebase.PTO;
 
-public class TeleopDrive extends Command {
+public class TeleopDrive extends CommandBase {
     public TeleopDrive() {
-        requires(Robot.kDrivebase);
+        addRequirements(Robot.kDrivebase);
     }
 
     @Override
-    protected void initialize() {
+    public void initialize() {
         Robot.kDrivebase.setPTO(PTO.Omni);
     }
 
     @Override
-    protected void execute() {
+    public void execute() {
         double speed = Num.deadband(Robot.oi.driver.getY(), 0.08);
         double turn = Num.deadband(-Robot.oi.driver.getZ(), 0.08);
         
@@ -38,17 +38,12 @@ public class TeleopDrive extends Command {
     }
 
     @Override
-    protected boolean isFinished() {
+    public boolean isFinished() {
         return false;
     }
 
     @Override
-    protected void end() {
-        Robot.kDrivebase.set(0);
-    }
-
-    @Override
-    protected void interrupted() {
+    public void end(boolean interrupted) {
         Robot.kDrivebase.set(0);
     }
 }

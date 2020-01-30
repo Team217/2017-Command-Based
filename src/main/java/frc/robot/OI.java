@@ -8,7 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.buttons.*;
+import edu.wpi.first.wpilibj2.command.button.*;
 
 public class OI {
     // Joysticks

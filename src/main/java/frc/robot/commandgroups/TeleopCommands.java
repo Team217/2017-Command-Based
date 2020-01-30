@@ -1,15 +1,19 @@
 package frc.robot.commandgroups;
 
-import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.*;
 
-public class TeleopCommands extends CommandGroup {
+public class TeleopCommands extends SequentialCommandGroup {
     public TeleopCommands() {
-        addParallel(new TeleopDrive());
-        addParallel(new TeleopBallIntake());
-        addParallel(new TeleopTurret());
-        addParallel(new TeleopWheelOfDoom());
-        addParallel(new TeleopGearIntake());
-        addParallel(new TeleopClimber());
+        addCommands(
+            parallel(
+                new TeleopDrive(),
+                new TeleopBallIntake(),
+                new TeleopTurret(),
+                new TeleopWheelOfDoom(),
+                new TeleopGearIntake(),
+                new TeleopClimber()
+            )
+        );
     }
 }

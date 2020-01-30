@@ -1,35 +1,30 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.*;
 
-public class TeleopClimber extends Command {
+public class TeleopClimber extends CommandBase {
     public TeleopClimber() {
-        requires(Robot.kClimber);
+        addRequirements(Robot.kClimber);
     }
 
     @Override
-    protected void initialize() {
+    public void initialize() {
     }
 
     @Override
-    protected void execute() {
+    public void execute() {
         double speed = Robot.oi.leftBumperOper.get() ? 0.8 : 0;
         Robot.kClimber.set(speed);
     }
 
     @Override
-    protected boolean isFinished() {
+    public boolean isFinished() {
         return false;
     }
 
     @Override
-    protected void end() {
-        Robot.kClimber.set(0);
-    }
-
-    @Override
-    protected void interrupted() {
+    public void end(boolean interrupted) {
         Robot.kClimber.set(0);
     }
 }

@@ -2,20 +2,20 @@ package frc.robot.commands;
 
 import org.team217.*;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.*;
 
-public class TeleopGearIntake extends Command {
+public class TeleopGearIntake extends CommandBase {
     public TeleopGearIntake() {
-        requires(Robot.kGearIntake);
+        addRequirements(Robot.kGearIntake);
     }
 
     @Override
-    protected void initialize() {
+    public void initialize() {
     }
 
     @Override
-    protected void execute() {
+    public void execute() {
         double speed = Num.deadband(Robot.oi.oper.getY(), 0.08);
         Robot.kGearIntake.setArm(speed);
 
@@ -31,18 +31,12 @@ public class TeleopGearIntake extends Command {
     }
 
     @Override
-    protected boolean isFinished() {
+    public boolean isFinished() {
         return false;
     }
 
     @Override
-    protected void end() {
-        Robot.kGearIntake.setArm(0);
-        Robot.kGearIntake.setIntake(0);
-    }
-
-    @Override
-    protected void interrupted() {
+    public void end(boolean interrupted) {
         Robot.kGearIntake.setArm(0);
         Robot.kGearIntake.setIntake(0);
     }

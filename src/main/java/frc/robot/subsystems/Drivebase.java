@@ -1,9 +1,10 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
 import static frc.robot.RobotMap.*;
 
-public class Drivebase extends Subsystem {
+public class Drivebase extends SubsystemBase {
     public enum PTO {
         Omni,
         FrontOmni,
@@ -12,7 +13,7 @@ public class Drivebase extends Subsystem {
     }
 
     @Override
-    protected void initDefaultCommand() {
+    public void periodic() {
     }
 
     public void set(double speed, double turn) {

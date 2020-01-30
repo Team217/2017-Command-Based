@@ -1,11 +1,12 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
 import static frc.robot.RobotMap.*;
 
-public class WheelOfDoom extends Subsystem {
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+public class WheelOfDoom extends SubsystemBase {
     @Override
-    protected void initDefaultCommand() {
+    public void periodic() {
     }
 
     public void set(double speed) {

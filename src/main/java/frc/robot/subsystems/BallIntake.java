@@ -1,16 +1,17 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
 import static frc.robot.RobotMap.*;
 
-public class BallIntake extends Subsystem {
+public class BallIntake extends SubsystemBase {
     public enum Flap {
         Up,
         Down
     }
 
     @Override
-    protected void initDefaultCommand() {
+    public void periodic() {
     }
 
     public void set(double speed) {

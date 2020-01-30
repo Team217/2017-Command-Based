@@ -8,8 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.*;
-
+import edu.wpi.first.wpilibj2.command.*;
 import frc.robot.commandgroups.*;
 import frc.robot.subsystems.*;
 import static frc.robot.RobotMap.*;
@@ -45,6 +44,10 @@ public class Robot extends TimedRobot {
         rightSlave.follow(rightMaster);
         flyWheelSlave.follow(flyWheel);
         climberSlave.follow(climber);
+
+        doom.setInverted(true);
+        lifter.setInverted(true);
+        kicker.setInverted(true);
     }
 
     @Override
@@ -57,13 +60,13 @@ public class Robot extends TimedRobot {
         teleopCommand = new TeleopCommands();
 
         if (teleopCommand != null) {
-            teleopCommand.start();
+            teleopCommand.schedule();
         }
     }
 
     @Override
     public void autonomousPeriodic() {
-        Scheduler.getInstance().run();
+        CommandScheduler.getInstance().run();
     }
 
     @Override
@@ -74,13 +77,13 @@ public class Robot extends TimedRobot {
         teleopCommand = new TeleopCommands();
 
         if (teleopCommand != null) {
-            teleopCommand.start();
+            teleopCommand.schedule();
         }
     }
 
     @Override
     public void teleopPeriodic() {
-        Scheduler.getInstance().run();
+        CommandScheduler.getInstance().run();
     }
 
     @Override
